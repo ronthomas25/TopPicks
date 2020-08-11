@@ -8,13 +8,13 @@
     tools:context=".MainActivity">
 
     <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/slider"
         android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="218dp"
         app:auto_cycle="true"
-        app:delay="1000"
         app:corner_radius="5"
-        android:id="@+id/slider">
-
+        app:delay="0"
+        app:period="1000">
     </com.denzcoskun.imageslider.ImageSlider>
 
 </LinearLayout>

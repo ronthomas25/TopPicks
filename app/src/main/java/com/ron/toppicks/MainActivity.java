@@ -3,27 +3,33 @@ package com.ron.toppicks;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.view.View;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.interfaces.ItemClickListener;
 import com.denzcoskun.imageslider.models.SlideModel;
 
-import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.System.exit;
+
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final Intent intent=new Intent(this,Toppicks.class);
 
         ImageSlider imageSlider = findViewById(R.id.slider);
+        final int munnar_img[] ={R.drawable.munnar};
+
+        final List<toppicksdata> toppicksdata=new ArrayList<>();
+        toppicksdata.add(new toppicksdata(munnar_img,"Munnar","kerala,India","hello",9.9312,76.2673,4.0));
 
         List<SlideModel> slideModels =new ArrayList<>();
         slideModels.add(new SlideModel(R.drawable.munnar,""));
@@ -31,30 +37,27 @@ public class MainActivity extends AppCompatActivity {
         slideModels.add(new SlideModel(R.drawable.munnar,""));
         imageSlider.setImageList(slideModels, true);
 
-        final int munnar_img[] = {R.drawable.munnar,R.drawable.munnar};
-
         imageSlider.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemSelected(int i) {
-                if(i==0){
 
-                    Intent intent = new Intent(MainActivity.this, Toppicks.class);
+                if(i == 0){
+                   /* intent.putExtra("place","Munnar");
+                    intent.putExtra("desc","description");
+                    intent.putExtra("rating",4.0f);
+                    intent.putExtra("latitude",9.9312f);
+                    intent.putExtra("longitude",76.2673f);
+                    intent.putExtra("state","kerala,India");
+                    intent.putExtra("img",munnar_img);*/
+                    Bundle bundle=new Bundle();
+                    bundle.putSerializable("data", (Serializable) toppicksdata);
+                    intent.putExtra("position",0);
+                    intent.putExtras(bundle);
                     startActivity(intent);
-                    setContentView(R.layout.activity_toppicks);
                 }
-                else if(i==1){
-                    Intent intent = new Intent(MainActivity.this, Toppicks.class);
-                    startActivity(intent);
-                    setContentView(R.layout.top_picks2);
-                }
-                else if(i==2){
-                    Intent intent = new Intent(MainActivity.this, Toppicks.class);
-                    startActivity(intent);
-                    setContentView(R.layout.top_picks3);
-                }
+
             }
         });
-
 
     }
 }
