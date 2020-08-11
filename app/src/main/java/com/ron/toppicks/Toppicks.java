@@ -44,6 +44,7 @@ public class Toppicks extends AppCompatActivity {
         RatingBar ratingBar=findViewById(R.id.ratingBar);
         TextView rating_textview=findViewById(R.id.rating);
 
+
         Intent intent=getIntent();
         Bundle bundle=getIntent().getExtras();
         List<toppicksdata> toppicksdata= (List<com.ron.toppicks.toppicksdata>) bundle.getSerializable("data");
