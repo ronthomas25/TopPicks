@@ -42,14 +42,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(int i) {
 
                 if(i == 0){
-                   /* intent.putExtra("place","Munnar");
-                    intent.putExtra("desc","description");
-                    intent.putExtra("rating",4.0f);
-                    intent.putExtra("latitude",9.9312f);
-                    intent.putExtra("longitude",76.2673f);
-                    intent.putExtra("state","kerala,India");
-                    intent.putExtra("img",munnar_img);*/
-                    Bundle bundle=new Bundle();
+
                     bundle.putSerializable("data", (Serializable) toppicksdata);
                     intent.putExtra("position",0);
                     intent.putExtras(bundle);
