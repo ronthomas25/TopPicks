@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(int i) {
 
                 if(i == 0){
-
+                    Bundle bundle=new Bundle();
                     bundle.putSerializable("data", (Serializable) toppicksdata);
                     intent.putExtra("position",0);
                     intent.putExtras(bundle);
